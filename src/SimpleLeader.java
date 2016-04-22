@@ -1,5 +1,7 @@
 import comp34120.ex2.PlayerImpl;
 import comp34120.ex2.PlayerType;
+import comp34120.ex2.Record;
+
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Random;
@@ -39,6 +41,17 @@ final class SimpleLeader
 		throws RemoteException
 	{
 		m_platformStub.publishPrice(m_type, genPrice(1.8f, 0.05f));
+
+//			m_platformStub.log(m_type, "" + m_platformStub.query(m_type,p_date-1));
+			m_platformStub.log(m_type, "" +calculateProfitOneDay(m_type,p_date-1));
+
+//		m_platformStub.log(PlayerType.LEADER, "Date 1:");
+	}
+
+	public double calculateProfitOneDay(PlayerType type, int day) throws RemoteException{
+		Record record = m_platformStub.query(type,day);
+		return (record.m_leaderPrice - record.m_cost)*(2 - record.m_leaderPrice + 0.3*record.m_followerPrice);
+
 	}
 
 	/**

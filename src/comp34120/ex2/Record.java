@@ -28,4 +28,14 @@ public final class Record
 		m_followerPrice = p_followerPrice;
 		m_cost = p_cost;
 	}
+
+	@Override
+	public String toString() {
+		return "Record{" +
+				"m_date=" + m_date +
+				", m_leaderPrice=" + m_leaderPrice +
+				", m_followerPrice=" + m_followerPrice +
+				", m_cost=" + m_cost +
+				'}';
+	}
 }
