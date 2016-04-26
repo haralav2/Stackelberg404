@@ -54,6 +54,8 @@ final class SimpleLeader
 
 	}
 
+
+
 	/**
 	 * Generate a random price based Gaussian distribution. The mean is p_mean,
 	 * and the diversity is p_diversity
