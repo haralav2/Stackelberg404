@@ -5,7 +5,6 @@ import comp34120.ex2.Record;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -17,8 +16,8 @@ import java.util.TimerTask;
 final class SimpleLeader
 	extends PlayerImpl
 {
-	/* The randomizer used to generate random price */
-	private final Random m_randomizer = new Random(System.currentTimeMillis());
+
+	private int p_steps = -1;
 
 	private SimpleLeader()
 		throws RemoteException, NotBoundException
@@ -42,21 +41,31 @@ final class SimpleLeader
 	public void proceedNewDay(int p_date)
 		throws RemoteException
 	{
-		Record[] records = getPreviousRecords(m_type);
+		/*Record[] records = getPreviousRecords(m_type);
 
 		m_platformStub.log(PlayerType.LEADER, "Records is: " + Arrays.toString(records));
 
-		ReactionFunction followerReactionFunction = ReactionFunction.getFollowersReactionFunction(records);
+		ReactionFunction followerReactionFunction = ReactionFunction.getFollowersReactionFunction(records);*/
 
-		m_platformStub.log(PlayerType.LEADER, "Reaction function is: " + followerReactionFunction);
+		//m_platformStub.log(PlayerType.LEADER, "Reaction function is: " + followerReactionFunction);
 
-		double ourPrice = calculateBestStrategy(followerReactionFunction);
+		log("Theta before: " + ReactionFunction.getTheta().toString());
 
-		m_platformStub.log(PlayerType.LEADER, "Our price is: " + ourPrice);
+		if(p_date > 101) {
+			ReactionFunction.updateThetaLeastSquaredApproach(m_platformStub, m_type, p_date-1);
+		}
+
+		log("Theta after: " + ReactionFunction.getTheta().toString());
+
+		double ourPrice = calculateBestStrategy(ReactionFunction.getTheta());
 
 		m_platformStub.publishPrice(m_type, (float)ourPrice);
 
-		m_platformStub.log(m_type, "" +calculateProfitOneDay(m_type,p_date-1));
+		//m_platformStub.log(m_type, "" +calculateProfitOneDay(m_type,p_date-1));
+	}
+
+	private void log(String s) throws RemoteException {
+		m_platformStub.log(m_type, s);
 	}
 
 
@@ -64,6 +73,7 @@ final class SimpleLeader
 	public void startSimulation(int p_steps)
 			throws RemoteException
 	{
+		this.p_steps = p_steps;
 		Record[] records = getPreviousRecords(m_type);
 
 		double Pt = ReactionFunction.initializePt(records);
@@ -77,12 +87,22 @@ final class SimpleLeader
 	public void endSimulation()
 			throws RemoteException
 	{
-		m_platformStub.log(m_type, "Bye!");
+		log("Total profit was: " + calculateTotalProfit());
+		log("Bye!");
 	}
 
-	private double calculateProfitOneDay(PlayerType type, int day) throws RemoteException{
-		Record record = m_platformStub.query(type,day);
-		return (record.m_leaderPrice - record.m_cost)*(2 - record.m_leaderPrice + 0.3*record.m_followerPrice);
+	private double calculateTotalProfit() throws RemoteException{
+
+		double profit = 0;
+
+		for(int i = 0; i < 100+this.p_steps; i++){
+			Record record = m_platformStub.query(m_type,i+1);
+
+			profit += (record.m_leaderPrice - record.m_cost)*(2 - record.m_leaderPrice + 0.3*record.m_followerPrice);
+
+		}
+
+		return profit;
 	}
 
 	private Record[] getPreviousRecords(PlayerType type) throws RemoteException{
