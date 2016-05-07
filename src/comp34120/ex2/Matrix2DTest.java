@@ -10,7 +10,7 @@ public class Matrix2DTest {
 
         Matrix2D result = matrix.multiply(matrix2);
         Matrix2x2 resultTwo = matrix.multiply(matrix);
-        Matrix2x2 resultThree = matrix2.inverseMatrix();
+        Matrix2x2 resultThree = matrix2.inverse();
         Matrix2x2 resultFour = matrix2.multiply(matrix2);
 
         System.out.println(result);

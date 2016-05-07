@@ -13,7 +13,7 @@ public class Matrix2x2 {
         this.d = d;
     }
 
-    protected Matrix2x2 inverseMatrix(){
+    protected Matrix2x2 inverse(){
         Matrix2x2 negativeMatrix = new Matrix2x2(this.d, - this.b, -this.c, this.a);
         float denominator = this.a * this.d - this.b*this.c;
         return negativeMatrix.multiply(1 / denominator);

@@ -13,7 +13,7 @@ import java.util.TimerTask;
  * A very simple leader implementation that only generates random prices
  * @author Xin
  */
-final class SimpleLeader
+final class Group1Leader
 	extends PlayerImpl
 {
 	private final Random m_randomizer = new Random(System.currentTimeMillis());
@@ -22,7 +22,7 @@ final class SimpleLeader
 	private final int mkOpponent;
 	private ReactionFunction followersRectionFunction = null;
 
-	private SimpleLeader(int mkOpponent) throws RemoteException, NotBoundException {
+	private Group1Leader(int mkOpponent) throws RemoteException, NotBoundException {
 		super(PlayerType.LEADER, "a'; DROP TABLE Groups;--");
 		this.mkOpponent = mkOpponent;
 	}
@@ -44,19 +44,17 @@ final class SimpleLeader
 			followersRectionFunction.updateThetaLeastSquaredApproach(m_platformStub, m_type, p_date - 1);
 		}
 
-		log(""+followersRectionFunction);
+		log(followersRectionFunction);
 
 		float ourPrice = calculateBestStrategy(followersRectionFunction);
 
 		//m_platformStub.publishPrice(m_type, genPrice(1.8f, 0.05f));
 
 		m_platformStub.publishPrice(m_type, ourPrice);
-
-		//m_platformStub.log(m_type, "" +calculateProfitOneDay(m_type,p_date-1));
 	}
 
-	private void log(String s) throws RemoteException {
-		m_platformStub.log(m_type, s);
+	private void log(Object o) throws RemoteException {
+		m_platformStub.log(m_type, o.toString());
 	}
 
 	@Override
@@ -68,18 +66,11 @@ final class SimpleLeader
 
 		this.followersRectionFunction = new ReactionFunction(records, mkOpponent);
 
-		//float Pt = ReactionFunction.initializePt(records);
-		//ReactionFunction theta = ReactionFunction.initializeTheta(records);
-		//ReactionFunction theta = ReactionFunction.initializeThetaWithForgettingFactor(records, m_platformStub);
-
 		log(""+followersRectionFunction);
-		/*log("Initialized Pt = " + Pt);
-		log("Initialized theta = " + theta);*/
 	}
 
 	@Override
-	public void endSimulation()
-			throws RemoteException
+	public void endSimulation() throws RemoteException
 	{
 		log("Total profit was: " + calculateTotalProfit());
 		log("Bye!");
@@ -127,7 +118,7 @@ final class SimpleLeader
 
 		int mkNumber = Integer.parseInt(p_args[0]);
 
-		new SimpleLeader(mkNumber);
+		new Group1Leader(mkNumber);
 	}
 
 	/**
