@@ -1,6 +1,7 @@
 package comp34120.ex2;
 
 import java.rmi.RemoteException;
+import java.util.IllegalFormatCodePointException;
 
 /**
  * Created by mbax2vh2 on 22/04/16.
@@ -51,13 +52,27 @@ public class ReactionFunction extends Matrix2D{
 
         float bStarNumerator = (records.length * lfpSum) - (lSum * fSum);
 
+
         float bStar = bStarNumerator / denominator;
+
+
 
         return new ReactionFunction(aStar, bStar);
     }
 
-    private static final int HISTORICAL_DAYS = 100;
-    private static final float FORGETTING_FACTOR = 0.95f;
+    private static float FORGETTING_FACTOR =  1.0f;
+
+    public static float initializeForgettingFactor(int mkOpponent){
+        switch (mkOpponent){
+            case 1: FORGETTING_FACTOR = 0.995f; break;
+            case 2: FORGETTING_FACTOR = 1.00f; break;
+            case 3: FORGETTING_FACTOR = 1.00f; break;
+            default: throw new IllegalArgumentException("Invalid MkOpponent number " + mkOpponent);
+        }
+        return FORGETTING_FACTOR;
+    }
+
+    private static final int HISTORICAL_DAYS = 5;
     private static float Pt = 0;
 
     public static ReactionFunction getTheta() {
@@ -81,6 +96,32 @@ public class ReactionFunction extends Matrix2D{
         return theta;
     }
 
+    public static ReactionFunction initializeThetaWithForgettingFactor(Record[] records){
+
+        theta = new ReactionFunction(0, 0);
+
+        for(int d = 1; d <= HISTORICAL_DAYS; d++){
+            float leaderPrice = records[d-1].m_leaderPrice;
+            float followerPrice = records[d-1].m_followerPrice;
+
+            Matrix2D phiMatrix = new Matrix2D(followerPrice, followerPrice * leaderPrice);
+            Matrix2D forgettingFactorMatrix = phiMatrix.multiply((float)Math.pow(FORGETTING_FACTOR, HISTORICAL_DAYS-d));
+            theta = theta.plus(forgettingFactorMatrix);
+            /*try {
+                p.log(PlayerType.LEADER, "phiMatrix: " + phiMatrix);
+               // p.log(PlayerType.LEADER, "forgettingMatrix: " + forgettingFactorMatrix);
+                p.log(PlayerType.LEADER, "theta: " + theta);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }*/
+
+
+        }
+
+        theta = theta.divide(Pt);
+        return theta;
+    }
+
     public static void updateThetaLeastSquaredApproach(Platform m_platformStub, PlayerType type, int day)
             throws RemoteException{
 
@@ -92,9 +133,9 @@ public class ReactionFunction extends Matrix2D{
 
         float predictionError = followerPrice - theta.getFollowersApproxPrice(leaderPrice);
 
-        m_platformStub.log(type,
-                "Prediction error: (" + followerPrice + " - " + theta.getFollowersApproxPrice(leaderPrice)
-                        + " = " + predictionError);
+        //m_platformStub.log(type,
+        //        "Prediction error: (" + followerPrice + " - " + theta.getFollowersApproxPrice(leaderPrice)
+        //                + " = " + predictionError);
 
         Matrix2D secondPart = adjustingFactor.multiply(predictionError);
 

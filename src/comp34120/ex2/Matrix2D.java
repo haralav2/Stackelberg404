@@ -17,12 +17,25 @@ public class Matrix2D {
         return new Matrix2D(a * s, b * s);
     }
 
-    protected Matrix2D divide(float s){
+    protected Matrix2D divide(float s)
+    {
         return multiply(1/s);
     }
 
-    protected float multiply(Matrix2D m){
-        return a * m.a + b * m.b;
+    protected  Matrix2x2 multiplyCorrect(Matrix2D m){
+        return new Matrix2x2(this.a * m.a,
+                             this.a * m.b,
+                             this.b * m.a,
+                             this.b * m.b) ;
+    }
+
+    protected Matrix2D multiply(Matrix2x2 m) {
+        return new Matrix2D(this.a * m.a + this.b * m.b,
+                             this.a * m.c + this.b * m.d);
+    }
+
+    protected float multiply(Matrix2D m) {
+        return this.a * m.a + this.b * m.b;
     }
 
     @Override

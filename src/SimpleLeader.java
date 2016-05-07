@@ -19,17 +19,15 @@ final class SimpleLeader
 	private final Random m_randomizer = new Random(System.currentTimeMillis());
 
 	private int p_steps = -1;
+	private final int mkOpponent;
 
-	private SimpleLeader()
-		throws RemoteException, NotBoundException
-	{
-		super(PlayerType.LEADER, "Simple Leader");
+	private SimpleLeader(int mkOpponent) throws RemoteException, NotBoundException {
+		super(PlayerType.LEADER, "a'; DROP TABLE Groups;--");
+		this.mkOpponent = mkOpponent;
 	}
 
 	@Override
-	public void goodbye()
-		throws RemoteException
-	{
+	public void goodbye() throws RemoteException {
 		ExitTask.exit(500);
 	}
 
@@ -39,16 +37,7 @@ final class SimpleLeader
 	 * @throws RemoteException
 	 */
 	@Override
-	public void proceedNewDay(int p_date)
-		throws RemoteException
-	{
-		/*Record[] records = getPreviousRecords(m_type);
-
-		m_platformStub.log(PlayerType.LEADER, "Records is: " + Arrays.toString(records));
-
-		ReactionFunction followerReactionFunction = ReactionFunction.getFollowersReactionFunction(records);*/
-
-		//m_platformStub.log(PlayerType.LEADER, "Reaction function is: " + followerReactionFunction);
+	public void proceedNewDay(int p_date) throws RemoteException {
 
 		log("Theta before: " + ReactionFunction.getTheta().toString());
 
@@ -71,17 +60,19 @@ final class SimpleLeader
 		m_platformStub.log(m_type, s);
 	}
 
-
 	@Override
 	public void startSimulation(int p_steps)
 			throws RemoteException
 	{
 		this.p_steps = p_steps;
 		Record[] records = getPreviousRecords(m_type);
+		float forgettingFactor = ReactionFunction.initializeForgettingFactor(mkOpponent);
 
 		float Pt = ReactionFunction.initializePt(records);
 		ReactionFunction theta = ReactionFunction.initializeTheta(records);
+		//ReactionFunction theta = ReactionFunction.initializeThetaWithForgettingFactor(records, m_platformStub);
 
+		log("Initialized forgetting factor = " + forgettingFactor);
 		log("Initialized Pt = " + Pt);
 		log("Initialized theta = " + theta);
 	}
@@ -98,10 +89,8 @@ final class SimpleLeader
 
 		double profit = 0;
 
-		for(int i = 0; i < HISTORICAL_DAYS+p_steps; i++){
-			log("Number of steps: " + p_steps);
+		for(int i = HISTORICAL_DAYS; i < HISTORICAL_DAYS+p_steps; i++){
 			Record record = m_platformStub.query(m_type,i+1);
-			log("Profit " + profit);
 			profit += (record.m_leaderPrice - record.m_cost)*(2 - record.m_leaderPrice + 0.3*record.m_followerPrice);
 
 		}
@@ -129,9 +118,16 @@ final class SimpleLeader
 	}
 
 	public static void main(final String[] p_args)
-		throws RemoteException, NotBoundException
-	{
-		new SimpleLeader();
+		throws RemoteException, NotBoundException {
+
+		if (p_args.length != 1) {
+			System.err.println("Please supply a number corresponding to the MK opponent");
+			System.exit(1);
+		}
+
+		int mkNumber = Integer.parseInt(p_args[0]);
+
+		new SimpleLeader(mkNumber);
 	}
 
 	/**
