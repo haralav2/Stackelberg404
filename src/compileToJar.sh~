@@ -1,0 +1,1 @@
+javac Group1Leader.java && jar cvfe group1.jar Kalah404.Main Kalah404/*.class

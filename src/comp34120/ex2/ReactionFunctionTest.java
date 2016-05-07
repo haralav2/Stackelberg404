@@ -14,7 +14,7 @@ public class ReactionFunctionTest {
                 new Record(1, 7, 6, 1)
         };
 
-        ReactionFunction reaction = new ReactionFunction(records);
+        ReactionFunction reaction = new ReactionFunction(records,1);
 
         System.out.println(reaction);
         System.out.println(reaction.getPt());

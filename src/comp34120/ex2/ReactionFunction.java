@@ -107,10 +107,6 @@ public class ReactionFunction {
 
         float predictionError = followerPrice - getFollowersApproxPrice(leaderPrice);
 
-        //m_platformStub.log(type,
-        //        "Prediction error: (" + followerPrice + " - " + theta.getFollowersApproxPrice(leaderPrice)
-        //                + " = " + predictionError);
-
         Matrix2D secondPart = adjustingFactor.multiply(predictionError);
 
         theta = theta.plus(secondPart);

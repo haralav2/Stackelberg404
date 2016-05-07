@@ -1,8 +1,5 @@
 package comp34120.ex2;
 
-/**
- * Created by mbax2vh2 on 07/05/16.
- */
 public class Matrix2DTest {
     public static void main(String[] args) {
         Matrix2D matrix = new Matrix2D(5,6);
@@ -18,6 +15,5 @@ public class Matrix2DTest {
         System.out.println(resultThree);
         System.out.println();
         System.out.println(resultFour);
-
     }
 }

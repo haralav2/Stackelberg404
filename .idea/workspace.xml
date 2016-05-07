@@ -1,19 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Stackelberg404:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/comp34120/ex2/ReactionFunction.java" line="16" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e83b03c7-5c0f-4c45-9b93-6fdd6aa5ef7e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/README.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/FollowerMk1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/FollowerMk2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/FollowerMk3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/FollowerSimple.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/FollowerType$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/FollowerType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/GUI$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/GUI$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/GUI$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/GUI$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/GUI$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/GUI$6.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/GUI$7.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/GUI$8.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/GUI$9.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/GUI$MyTableModel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/GUI$SimulationTask.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/GUI.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/Main.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/Platform.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/PlatformImpl$DetectConnectionTask.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/PlatformImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/Player.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/PlayerImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/PlayerType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp34120/ex2/Record.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nnn.xls" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/output.xls" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SimpleLeader.java" afterPath="$PROJECT_DIR$/src/Group1Leader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results.ods" afterPath="$PROJECT_DIR$/results.ods" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.~lock.results.ods#" afterPath="$PROJECT_DIR$/.~lock.results.ods#" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/withForg1.xls" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/withForgP5.xls" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/withoutForg1.xls" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/withoutForgP5.xls" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Group1Leader.java" afterPath="$PROJECT_DIR$/src/Group1Leader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/comp34120/ex2/Matrix2D.java" afterPath="$PROJECT_DIR$/src/comp34120/ex2/Matrix2D.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/comp34120/ex2/Matrix2DTest.java" afterPath="$PROJECT_DIR$/src/comp34120/ex2/Matrix2DTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/comp34120/ex2/Matrix2x2.java" afterPath="$PROJECT_DIR$/src/comp34120/ex2/Matrix2x2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/comp34120/ex2/PlayerImpl.java" afterPath="$PROJECT_DIR$/src/comp34120/ex2/PlayerImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/comp34120/ex2/ReactionFunction.java" afterPath="$PROJECT_DIR$/src/comp34120/ex2/ReactionFunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/leader_run.sh" afterPath="$PROJECT_DIR$/src/leader_run.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/comp34120/ex2/ReactionFunctionTest.java" afterPath="$PROJECT_DIR$/src/comp34120/ex2/ReactionFunctionTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Stackelberg404.iws" />
@@ -62,23 +98,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Group1Leader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Group1Leader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.491228">
-              <caret line="96" column="29" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReactionFunction.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ReactionFunction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/ReactionFunction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3161876">
-              <caret line="11" column="44" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="44" />
+            <state vertical-scroll-proportion="-50.689655">
+              <caret line="98" column="95" selection-start-line="98" selection-start-column="95" selection-end-line="98" selection-end-column="95" />
               <folding>
                 <element signature="e#2993#2994#0" expanded="true" />
                 <element signature="e#3047#3048#0" expanded="true" />
@@ -86,9 +110,19 @@
                 <element signature="e#3108#3109#0" expanded="true" />
                 <element signature="e#3139#3140#0" expanded="true" />
                 <element signature="e#3169#3170#0" expanded="true" />
-                <element signature="e#6131#6132#0" expanded="true" />
-                <element signature="e#6156#6157#0" expanded="true" />
+                <element signature="e#5932#5933#0" expanded="true" />
+                <element signature="e#5957#5958#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Platform.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Platform.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -97,30 +131,17 @@
         <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Matrix2D.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding>
-                <element signature="e#708#709#0" expanded="true" />
-                <element signature="e#758#759#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Matrix2x2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Matrix2x2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="platform_run.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/platform_run.sh">
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.53571427">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -130,7 +151,37 @@
         <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/ReactionFunctionTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Record.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Record.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.10067114">
+              <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Matrix2x2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Matrix2x2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PseudoLeader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/PseudoLeader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -140,7 +191,7 @@
         <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Matrix2DTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -150,8 +201,10 @@
         <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/PlayerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-              <folding />
+              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -178,14 +231,16 @@
       <list>
         <option value="$PROJECT_DIR$/src/comp34120/ex2/Record.java" />
         <option value="$PROJECT_DIR$/src/comp34120/ex2/DemandModel.java" />
-        <option value="$PROJECT_DIR$/src/comp34120/ex2/ReactionFunctionTest.java" />
-        <option value="$PROJECT_DIR$/src/comp34120/ex2/Matrix2D.java" />
-        <option value="$PROJECT_DIR$/src/comp34120/ex2/Matrix2DTest.java" />
         <option value="$PROJECT_DIR$/src/SimpleLeader.java" />
         <option value="$PROJECT_DIR$/src/README.txt" />
-        <option value="$PROJECT_DIR$/src/comp34120/ex2/Matrix2x2.java" />
+        <option value="$PROJECT_DIR$/src/comp34120/ex2/Matrix2D.java" />
+        <option value="$PROJECT_DIR$/src/comp34120/ex2/PlayerImpl.java" />
         <option value="$PROJECT_DIR$/src/Group1Leader.java" />
+        <option value="$PROJECT_DIR$/src/comp34120/ex2/PseudoLeader.java" />
+        <option value="$PROJECT_DIR$/src/comp34120/ex2/ReactionFunctionTest.java" />
         <option value="$PROJECT_DIR$/src/comp34120/ex2/ReactionFunction.java" />
+        <option value="$PROJECT_DIR$/src/comp34120/ex2/Matrix2x2.java" />
+        <option value="$PROJECT_DIR$/src/comp34120/ex2/Matrix2DTest.java" />
       </list>
     </option>
   </component>
@@ -259,6 +314,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stackelberg404" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="ex2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -269,7 +338,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -278,6 +347,8 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/mbax2vh2/COMP34120/Stackelberg404/src/comp34120/ex2/Matrix2D.java&#10;M&#9;FILE&#9;file:///home/mbax2vh2/COMP34120/Stackelberg404/src/comp34120/ex2/Matrix2x2.java&#10;mat&#9;FILE&#9;file:///home/mbax2vh2/COMP34120/Stackelberg404/src/comp34120/ex2/Matrix2D.java" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RunManager" selected="Application.Matrix2DTest">
     <configuration default="false" name="ReactionFunctionTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -492,7 +563,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="27" width="1922" height="1174" extended-state="7" />
+    <frame x="-1" y="27" width="1922" height="1174" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -500,7 +571,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32959852" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959852" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -552,7 +623,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="77" column="55" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -561,7 +634,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#4312#4313#0" expanded="false" />
+            <element signature="e#4368#4369#0" expanded="false" />
+            <element signature="e#4407#4408#0" expanded="false" />
+            <element signature="e#4430#4431#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -577,8 +653,8 @@
             <element signature="e#3108#3109#0" expanded="true" />
             <element signature="e#3139#3140#0" expanded="true" />
             <element signature="e#3169#3170#0" expanded="true" />
-            <element signature="e#6131#6132#0" expanded="true" />
-            <element signature="e#6156#6157#0" expanded="true" />
+            <element signature="e#5932#5933#0" expanded="true" />
+            <element signature="e#5957#5958#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -627,7 +703,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="67" column="30" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -636,7 +714,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#4312#4313#0" expanded="false" />
+            <element signature="e#4368#4369#0" expanded="false" />
+            <element signature="e#4407#4408#0" expanded="false" />
+            <element signature="e#4430#4431#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -652,8 +733,8 @@
             <element signature="e#3108#3109#0" expanded="true" />
             <element signature="e#3139#3140#0" expanded="true" />
             <element signature="e#3169#3170#0" expanded="true" />
-            <element signature="e#6131#6132#0" expanded="true" />
-            <element signature="e#6156#6157#0" expanded="true" />
+            <element signature="e#5932#5933#0" expanded="true" />
+            <element signature="e#5957#5958#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -702,7 +783,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -711,7 +794,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="52" column="79" selection-start-line="52" selection-start-column="66" selection-end-line="52" selection-end-column="79" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#4312#4313#0" expanded="false" />
+            <element signature="e#4368#4369#0" expanded="false" />
+            <element signature="e#4407#4408#0" expanded="false" />
+            <element signature="e#4430#4431#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -727,8 +813,8 @@
             <element signature="e#3108#3109#0" expanded="true" />
             <element signature="e#3139#3140#0" expanded="true" />
             <element signature="e#3169#3170#0" expanded="true" />
-            <element signature="e#6131#6132#0" expanded="true" />
-            <element signature="e#6156#6157#0" expanded="true" />
+            <element signature="e#5932#5933#0" expanded="true" />
+            <element signature="e#5957#5958#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -775,7 +861,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -792,7 +880,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#4312#4313#0" expanded="false" />
+            <element signature="e#4368#4369#0" expanded="false" />
+            <element signature="e#4407#4408#0" expanded="false" />
+            <element signature="e#4430#4431#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -831,7 +922,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -842,14 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/PseudoLeader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///opt/JDK/jdk1.8.0_45/src.zip!/java/rmi/Remote.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3739214">
@@ -857,77 +942,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/PlayerType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Record.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Platform.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/PlayerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///opt/JDK/jdk1.8.0_45/src.zip!/java/io/PrintStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="761" column="16" selection-start-line="761" selection-start-column="16" selection-end-line="761" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/ReactionFunctionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Matrix2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="e#708#709#0" expanded="true" />
-            <element signature="e#758#759#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Matrix2DTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -948,14 +966,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Matrix2x2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/platform_run.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.53571427">
@@ -966,18 +976,87 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Group1Leader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.491228">
-          <caret line="96" column="29" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
+        <state vertical-scroll-proportion="-3.7017543">
+          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#4312#4313#0" expanded="false" />
+            <element signature="e#4368#4369#0" expanded="false" />
+            <element signature="e#4407#4408#0" expanded="false" />
+            <element signature="e#4430#4431#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/PlayerType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/PseudoLeader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Matrix2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Matrix2DTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Matrix2x2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Platform.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/PlayerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/ReactionFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3161876">
-          <caret line="11" column="44" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="44" />
+        <state vertical-scroll-proportion="-50.689655">
+          <caret line="98" column="95" selection-start-line="98" selection-start-column="95" selection-end-line="98" selection-end-column="95" />
           <folding>
             <element signature="e#2993#2994#0" expanded="true" />
             <element signature="e#3047#3048#0" expanded="true" />
@@ -985,9 +1064,25 @@
             <element signature="e#3108#3109#0" expanded="true" />
             <element signature="e#3139#3140#0" expanded="true" />
             <element signature="e#3169#3170#0" expanded="true" />
-            <element signature="e#6131#6132#0" expanded="true" />
-            <element signature="e#6156#6157#0" expanded="true" />
+            <element signature="e#5932#5933#0" expanded="true" />
+            <element signature="e#5957#5958#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/ReactionFunctionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/comp34120/ex2/Record.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10067114">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -997,10 +1092,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>Stackelberg404:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

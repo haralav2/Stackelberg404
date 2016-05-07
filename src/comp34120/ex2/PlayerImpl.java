@@ -58,7 +58,6 @@ public abstract class PlayerImpl
 	 * To check the availability of this player
 	 * @throws RemoteException
 	 */
-	@Override
 	public void checkConnection()
 		throws RemoteException {}
 
@@ -67,7 +66,6 @@ public abstract class PlayerImpl
 	 * @param p_steps Indicates how many steps will this round of simulation perform
 	 * @throws RemoteException
 	 */
-	@Override
 	public void startSimulation(int p_steps)
 		throws RemoteException
 	{
@@ -78,7 +76,6 @@ public abstract class PlayerImpl
 	 * To inform this instance the end of the simulation
 	 * @throws RemoteException
 	 */
-	@Override
 	public void endSimulation()
 		throws RemoteException
 	{
@@ -89,7 +86,6 @@ public abstract class PlayerImpl
 	 * To inform this instance the end of the session
 	 * @throws RemoteException
 	 */
-	@Override
 	public void goodbye()
 		throws RemoteException
 	{

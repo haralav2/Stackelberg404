@@ -40,15 +40,19 @@ final class Group1Leader
 	@Override
 	public void proceedNewDay(int p_date) throws RemoteException {
 
+		/*
+		* If it is the first day of the game we do not need to update the values because we have
+		* no new information to consider. For every other day we need to update the model
+		* with the prices published the previous day
+		* */
 		if(p_date > HISTORICAL_DAYS+1) {
 			followersRectionFunction.updateThetaLeastSquaredApproach(m_platformStub, m_type, p_date - 1);
 		}
 
-		log(followersRectionFunction);
-
+		/*
+		* Generate our price based on the approximation of the follower's strategy
+		* */
 		float ourPrice = calculateBestStrategy(followersRectionFunction);
-
-		//m_platformStub.publishPrice(m_type, genPrice(1.8f, 0.05f));
 
 		m_platformStub.publishPrice(m_type, ourPrice);
 	}
@@ -62,11 +66,18 @@ final class Group1Leader
 			throws RemoteException
 	{
 		this.p_steps = p_steps;
+
+		/*
+		* Obtain all historical data
+		* */
 		Record[] records = getPreviousRecords(m_type);
 
+		/*
+		* Initialise the reaction function using the best initial conditions
+		* */
 		this.followersRectionFunction = new ReactionFunction(records, mkOpponent);
 
-		log(""+followersRectionFunction);
+		log(followersRectionFunction);
 	}
 
 	@Override
@@ -104,6 +115,14 @@ final class Group1Leader
 		return (float) (p_mean + m_randomizer.nextGaussian() * p_diversity);
 	}
 
+	/*
+	* Calculating the best strategy After we have obtained to follower's reaction function
+	* by maximising J_l(U_l,R^(U_l)) for this we needed the unit cost which was 1.00 and the demand model
+	* which has been given. Using information we found the first derivative
+	* and obtained the best strategy. To verify that we have performed the calculations correction each of us
+	* derived the answer independently and we compared our results at the end, which can be seen on the pictures
+	* uploaded on this wiki.
+	* */
 	private static float calculateBestStrategy(ReactionFunction f){ //f is the opponent's reaction function
 		return ((0.3f * f.getbStar()) - (0.3f * f.getaStar()) - 3) / ((0.6f * f.getbStar()) - 2);
 	}

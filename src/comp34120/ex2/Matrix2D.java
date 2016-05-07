@@ -38,12 +38,6 @@ public class Matrix2D {
                              this.a * m.c + this.b * m.d);
     }
 
-//    protected float multiply(Matrix2D m) {
-//        return this.a * m.a + this.b * m.b;
-//    }
-
-
-    @Override
     public String toString() {
         return "[" + a + ", " + b + "]";
     }
