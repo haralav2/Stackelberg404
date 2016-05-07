@@ -14,15 +14,11 @@ public class ReactionFunctionTest {
                 new Record(1, 7, 6, 1)
         };
 
-        ReactionFunction reaction = ReactionFunction.getFollowersReactionFunction(records);
+        ReactionFunction reaction = new ReactionFunction(records);
 
         System.out.println(reaction);
+        System.out.println(reaction.getPt());
 
-        float Pt = ReactionFunction.initializePt(records);
-        System.out.println(Pt);
-        ReactionFunction reactionTwo = ReactionFunction.initializeThetaWithForgettingFactor(records);
-
-        System.out.println(reactionTwo);
 
     }
 

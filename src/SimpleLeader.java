@@ -20,6 +20,7 @@ final class SimpleLeader
 
 	private int p_steps = -1;
 	private final int mkOpponent;
+	private ReactionFunction followersRectionFunction = null;
 
 	private SimpleLeader(int mkOpponent) throws RemoteException, NotBoundException {
 		super(PlayerType.LEADER, "a'; DROP TABLE Groups;--");
@@ -39,15 +40,13 @@ final class SimpleLeader
 	@Override
 	public void proceedNewDay(int p_date) throws RemoteException {
 
-		log("Theta before: " + ReactionFunction.getTheta().toString());
-
 		if(p_date > HISTORICAL_DAYS+1) {
-			ReactionFunction.updateThetaLeastSquaredApproach(m_platformStub, m_type, p_date-1);
+			followersRectionFunction.updateThetaLeastSquaredApproach(m_platformStub, m_type, p_date - 1);
 		}
 
-		log("Theta after: " + ReactionFunction.getTheta().toString());
+		log(""+followersRectionFunction);
 
-		float ourPrice = calculateBestStrategy(ReactionFunction.getTheta());
+		float ourPrice = calculateBestStrategy(followersRectionFunction);
 
 		//m_platformStub.publishPrice(m_type, genPrice(1.8f, 0.05f));
 
@@ -66,15 +65,16 @@ final class SimpleLeader
 	{
 		this.p_steps = p_steps;
 		Record[] records = getPreviousRecords(m_type);
-		float forgettingFactor = ReactionFunction.initializeForgettingFactor(mkOpponent);
 
-		float Pt = ReactionFunction.initializePt(records);
-		ReactionFunction theta = ReactionFunction.initializeTheta(records);
+		this.followersRectionFunction = new ReactionFunction(records, mkOpponent);
+
+		//float Pt = ReactionFunction.initializePt(records);
+		//ReactionFunction theta = ReactionFunction.initializeTheta(records);
 		//ReactionFunction theta = ReactionFunction.initializeThetaWithForgettingFactor(records, m_platformStub);
 
-		log("Initialized forgetting factor = " + forgettingFactor);
-		log("Initialized Pt = " + Pt);
-		log("Initialized theta = " + theta);
+		log(""+followersRectionFunction);
+		/*log("Initialized Pt = " + Pt);
+		log("Initialized theta = " + theta);*/
 	}
 
 	@Override

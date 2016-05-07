@@ -6,40 +6,31 @@ import java.util.IllegalFormatCodePointException;
 /**
  * Created by mbax2vh2 on 22/04/16.
  */
-public class ReactionFunction extends Matrix2D{
+public class ReactionFunction {
 
-    public ReactionFunction(float a, float b) {
-        super(a, b);
+    private Matrix2D theta = null;
+    private Matrix2x2 Pt = new Matrix2x2(0,0,0,0);
+    private final int mkOpponent;
+    private static final int HISTORICAL_DAYS = 100;
+
+
+    public ReactionFunction(Record[] records, int mkOpponent) {
+        this.mkOpponent = mkOpponent;
+        initializeForgettingFactor();
+        initalizePt(records);
+        initializeTheta(records);
     }
 
-    private float getFollowersApproxPrice(float leaderPrice){
-        return a + b * leaderPrice;
+    private void initializeForgettingFactor(){
+        switch (mkOpponent){
+            case 1: FORGETTING_FACTOR = 0.995f; break;
+            case 2: FORGETTING_FACTOR = 1.00f; break;
+            case 3: FORGETTING_FACTOR = 1.00f; break;
+            default: throw new IllegalArgumentException("Invalid MkOpponent number " + mkOpponent);
+        }
     }
 
-    public float getbStar() {
-        return b;
-    }
-
-    public float getaStar() {
-        return a;
-    }
-
-    @Override
-    protected ReactionFunction plus(Matrix2D m){
-        return new ReactionFunction(a + m.a, b + m.b);
-    }
-
-    @Override
-    protected ReactionFunction multiply(float s){
-        return new ReactionFunction(a * s, b * s);
-    }
-
-    @Override
-    protected ReactionFunction divide(float s){
-        return multiply(1 / s);
-    }
-
-    public static ReactionFunction getFollowersReactionFunction(Record[] records){
+    private void initializeTheta(Record[] records){
         float lSum = getLeaderSum(records);
         float fSum = getFollowerSum(records);
         float lfpSum = getLeaderFollowerProductSum(records);
@@ -55,50 +46,38 @@ public class ReactionFunction extends Matrix2D{
 
         float bStar = bStarNumerator / denominator;
 
+        theta = new Matrix2D(aStar, bStar);
+    }
+
+    private void initalizePt(Record[] records){
+        for(int d = 1; d <= HISTORICAL_DAYS; d++){
+            float leaderPrice = records[d-1].m_leaderPrice;
+            Matrix2D leaderMatrix = new Matrix2D(1, leaderPrice);
+            Matrix2x2 multipliedLeaders = leaderMatrix.multiply(leaderMatrix);
+            Matrix2x2 scalarMatrix = multipliedLeaders.multiply((float)Math.pow(FORGETTING_FACTOR, HISTORICAL_DAYS - d));
+            Pt = Pt.plus(scalarMatrix);
+        }
+    }
 
 
-        return new ReactionFunction(aStar, bStar);
+    private float getFollowersApproxPrice(float leaderPrice){
+        return theta.a + theta.b * leaderPrice;
+    }
+
+    public float getbStar() {
+        return theta.b;
+    }
+
+    public float getaStar() {
+        return theta.a;
     }
 
     private static float FORGETTING_FACTOR =  1.0f;
 
-    public static float initializeForgettingFactor(int mkOpponent){
-        switch (mkOpponent){
-            case 1: FORGETTING_FACTOR = 0.995f; break;
-            case 2: FORGETTING_FACTOR = 1.00f; break;
-            case 3: FORGETTING_FACTOR = 1.00f; break;
-            default: throw new IllegalArgumentException("Invalid MkOpponent number " + mkOpponent);
-        }
-        return FORGETTING_FACTOR;
-    }
-
-    private static final int HISTORICAL_DAYS = 5;
-    private static float Pt = 0;
-
-    public static ReactionFunction getTheta() {
-        return theta;
-    }
-
-    private static ReactionFunction theta = null;
-
-    public static float initializePt(Record[] records){
-        //Best initial condition for recursive least squared approach. Slides 13
-
-        for(int d = 1; d <= HISTORICAL_DAYS; d++){
-            float leaderPrice = records[d-1].m_leaderPrice;
-            Pt += Math.pow(FORGETTING_FACTOR, HISTORICAL_DAYS-d) * (1 + leaderPrice*leaderPrice);
-        }
-        return Pt;
-    }
-
-    public static ReactionFunction initializeTheta(Record[] records){
-        theta = getFollowersReactionFunction(records);
-        return theta;
-    }
-
+    /*
     public static ReactionFunction initializeThetaWithForgettingFactor(Record[] records){
 
-        theta = new ReactionFunction(0, 0);
+        followersRectionFunction = new ReactionFunction(0, 0);
 
         for(int d = 1; d <= HISTORICAL_DAYS; d++){
             float leaderPrice = records[d-1].m_leaderPrice;
@@ -106,23 +85,18 @@ public class ReactionFunction extends Matrix2D{
 
             Matrix2D phiMatrix = new Matrix2D(followerPrice, followerPrice * leaderPrice);
             Matrix2D forgettingFactorMatrix = phiMatrix.multiply((float)Math.pow(FORGETTING_FACTOR, HISTORICAL_DAYS-d));
-            theta = theta.plus(forgettingFactorMatrix);
-            /*try {
-                p.log(PlayerType.LEADER, "phiMatrix: " + phiMatrix);
-               // p.log(PlayerType.LEADER, "forgettingMatrix: " + forgettingFactorMatrix);
-                p.log(PlayerType.LEADER, "theta: " + theta);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }*/
+            followersRectionFunction = followersRectionFunction.plus(forgettingFactorMatrix);
+
 
 
         }
-
-        theta = theta.divide(Pt);
+        Matrix2x2 inversePt = Pt.inverseMatrix();
+        theta = theta.multiply(inversePt);
         return theta;
     }
+    */
 
-    public static void updateThetaLeastSquaredApproach(Platform m_platformStub, PlayerType type, int day)
+    public void updateThetaLeastSquaredApproach(Platform m_platformStub, PlayerType type, int day)
             throws RemoteException{
 
         Record record = m_platformStub.query(type,day);
@@ -131,7 +105,7 @@ public class ReactionFunction extends Matrix2D{
 
         Matrix2D adjustingFactor = calculateAdjustingFactor(leaderPrice);
 
-        float predictionError = followerPrice - theta.getFollowersApproxPrice(leaderPrice);
+        float predictionError = followerPrice - getFollowersApproxPrice(leaderPrice);
 
         //m_platformStub.log(type,
         //        "Prediction error: (" + followerPrice + " - " + theta.getFollowersApproxPrice(leaderPrice)
@@ -144,19 +118,21 @@ public class ReactionFunction extends Matrix2D{
         updatePt(leaderPrice);
     }
 
-    private static void updatePt(float leaderPrice){
-        float scalar = 1 / FORGETTING_FACTOR;
+    private void updatePt(float leaderPrice){
 
-        float phiNumerator = new Matrix2D(1, leaderPrice).multiply(new Matrix2D(1, leaderPrice));
+        Matrix2D leaderMatrix = new Matrix2D(1, leaderPrice);
+        Matrix2D leaderMatrixTimesPt = leaderMatrix.multiply(Pt);
 
-        float numerator = Pt * Pt * phiNumerator;
+        Matrix2x2 phiNumerator = leaderMatrixTimesPt.multiply(leaderMatrix).multiply(Pt);
+
         float denominator = calculatePhiDenominator(leaderPrice);
+        phiNumerator = phiNumerator.multiply(1/denominator);
 
 
-        Pt = scalar * (Pt - numerator/denominator);
+        Pt = Pt.minus(phiNumerator).multiply(1 / FORGETTING_FACTOR);
     }
 
-    public static Matrix2D calculateAdjustingFactor(float leaderPrice){
+    public Matrix2D calculateAdjustingFactor(float leaderPrice){
         float denominator = calculatePhiDenominator(leaderPrice);
 
         Matrix2D numerator = new Matrix2D(1, leaderPrice).multiply(Pt);
@@ -164,8 +140,14 @@ public class ReactionFunction extends Matrix2D{
         return numerator.divide(denominator);
     }
 
-    private static float calculatePhiDenominator(float leaderPrice){
-        return FORGETTING_FACTOR + Pt + (Pt * leaderPrice * leaderPrice);
+    private float calculatePhiDenominator(float leaderPrice){
+
+        Matrix2D leaderMatrix = new Matrix2D(1, leaderPrice);
+        Matrix2D leaderMatrixTimesPt = leaderMatrix.multiply(Pt);
+
+        float result = leaderMatrixTimesPt.multiplyTwo(leaderMatrix);
+
+        return FORGETTING_FACTOR + result;
     }
 
     private static float getLeaderSum(Record[] records){
@@ -208,9 +190,22 @@ public class ReactionFunction extends Matrix2D{
 
         return d;
     }
+/*
+    @Override
+    public String toString() {
+        //return "R^ = " + theta.a + " + " + theta.b + "Ul";
+    }*/
 
     @Override
     public String toString() {
-        return "R^ = " + a + " + " + b + "Ul";
+        return "ReactionFunction{" +
+                "theta=" + theta +
+                ", Pt=" + Pt +
+                ", mkOpponent=" + mkOpponent +
+                '}';
+    }
+
+    public Matrix2x2 getPt() {
+        return Pt;
     }
 }

@@ -22,11 +22,15 @@ public class Matrix2D {
         return multiply(1/s);
     }
 
-    protected  Matrix2x2 multiplyCorrect(Matrix2D m){
+    protected Matrix2x2 multiply(Matrix2D m){
         return new Matrix2x2(this.a * m.a,
                              this.a * m.b,
                              this.b * m.a,
                              this.b * m.b) ;
+    }
+
+    protected float multiplyTwo(Matrix2D m){
+        return this.a * m.a + this.b * m.b;
     }
 
     protected Matrix2D multiply(Matrix2x2 m) {
@@ -34,9 +38,10 @@ public class Matrix2D {
                              this.a * m.c + this.b * m.d);
     }
 
-    protected float multiply(Matrix2D m) {
-        return this.a * m.a + this.b * m.b;
-    }
+//    protected float multiply(Matrix2D m) {
+//        return this.a * m.a + this.b * m.b;
+//    }
+
 
     @Override
     public String toString() {
