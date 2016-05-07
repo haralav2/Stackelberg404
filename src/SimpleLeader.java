@@ -16,6 +16,7 @@ import java.util.TimerTask;
 final class SimpleLeader
 	extends PlayerImpl
 {
+	private final Random m_randomizer = new Random(System.currentTimeMillis());
 
 	private int p_steps = -1;
 
@@ -51,15 +52,17 @@ final class SimpleLeader
 
 		log("Theta before: " + ReactionFunction.getTheta().toString());
 
-		if(p_date > 101) {
+		if(p_date > HISTORICAL_DAYS+1) {
 			ReactionFunction.updateThetaLeastSquaredApproach(m_platformStub, m_type, p_date-1);
 		}
 
 		log("Theta after: " + ReactionFunction.getTheta().toString());
 
-		double ourPrice = calculateBestStrategy(ReactionFunction.getTheta());
+		float ourPrice = calculateBestStrategy(ReactionFunction.getTheta());
 
-		m_platformStub.publishPrice(m_type, (float)ourPrice);
+		//m_platformStub.publishPrice(m_type, genPrice(1.8f, 0.05f));
+
+		m_platformStub.publishPrice(m_type, ourPrice);
 
 		//m_platformStub.log(m_type, "" +calculateProfitOneDay(m_type,p_date-1));
 	}
@@ -76,11 +79,11 @@ final class SimpleLeader
 		this.p_steps = p_steps;
 		Record[] records = getPreviousRecords(m_type);
 
-		double Pt = ReactionFunction.initializePt(records);
+		float Pt = ReactionFunction.initializePt(records);
 		ReactionFunction theta = ReactionFunction.initializeTheta(records);
 
-		m_platformStub.log(m_type, "Initialized Pt = " + Pt);
-		m_platformStub.log(m_type, "Initialized theta = " + theta);
+		log("Initialized Pt = " + Pt);
+		log("Initialized theta = " + theta);
 	}
 
 	@Override
@@ -95,9 +98,10 @@ final class SimpleLeader
 
 		double profit = 0;
 
-		for(int i = 0; i < 100+this.p_steps; i++){
+		for(int i = 0; i < HISTORICAL_DAYS+p_steps; i++){
+			log("Number of steps: " + p_steps);
 			Record record = m_platformStub.query(m_type,i+1);
-
+			log("Profit " + profit);
 			profit += (record.m_leaderPrice - record.m_cost)*(2 - record.m_leaderPrice + 0.3*record.m_followerPrice);
 
 		}
@@ -105,18 +109,23 @@ final class SimpleLeader
 		return profit;
 	}
 
+	private static final int HISTORICAL_DAYS = 100;
 	private Record[] getPreviousRecords(PlayerType type) throws RemoteException{
-		Record[] records = new Record[100]; //todo
+		Record[] records = new Record[HISTORICAL_DAYS];
 
-		for(int i = 0; i < 100; i++){
+		for(int i = 0; i < HISTORICAL_DAYS; i++){
 			records[i] = m_platformStub.query(type,i+1);
 		}
 
 		return records;
 	}
 
-	private static double calculateBestStrategy(ReactionFunction f){ //f is the opponent's reaction function
-		return ((0.3 * f.getbStar()) - (0.3 * f.getaStar()) - 3) / ((0.6 * f.getbStar()) - 2);
+	private float genPrice(final float p_mean, final float p_diversity) {
+		return (float) (p_mean + m_randomizer.nextGaussian() * p_diversity);
+	}
+
+	private static float calculateBestStrategy(ReactionFunction f){ //f is the opponent's reaction function
+		return ((0.3f * f.getbStar()) - (0.3f * f.getaStar()) - 3) / ((0.6f * f.getbStar()) - 2);
 	}
 
 	public static void main(final String[] p_args)

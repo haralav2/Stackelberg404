@@ -2,9 +2,9 @@ package comp34120.ex2;
 
 public class Matrix2D {
 
-    protected final double a, b;
+    protected final float a, b;
 
-    public Matrix2D(double a, double b) {
+    public Matrix2D(float a, float b) {
         this.a = a;
         this.b = b;
     }
@@ -13,15 +13,15 @@ public class Matrix2D {
         return new Matrix2D(a + m.a, b + m.b);
     }
 
-    protected Matrix2D multiply(double s){
+    protected Matrix2D multiply(float s){
         return new Matrix2D(a * s, b * s);
     }
 
-    protected Matrix2D divide(double s){
+    protected Matrix2D divide(float s){
         return multiply(1/s);
     }
 
-    protected double multiply(Matrix2D m){
+    protected float multiply(Matrix2D m){
         return a * m.a + b * m.b;
     }
 

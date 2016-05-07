@@ -7,22 +7,21 @@ import java.rmi.RemoteException;
  */
 public class ReactionFunction extends Matrix2D{
 
-    public ReactionFunction(double a, double b) {
+    public ReactionFunction(float a, float b) {
         super(a, b);
     }
 
-    private double getFollowersApproxPrice(double leaderPrice){
+    private float getFollowersApproxPrice(float leaderPrice){
         return a + b * leaderPrice;
     }
 
-    public double getbStar() {
+    public float getbStar() {
         return b;
     }
 
-    public double getaStar() {
+    public float getaStar() {
         return a;
     }
-
 
     @Override
     protected ReactionFunction plus(Matrix2D m){
@@ -30,37 +29,36 @@ public class ReactionFunction extends Matrix2D{
     }
 
     @Override
-    protected ReactionFunction multiply(double s){
+    protected ReactionFunction multiply(float s){
         return new ReactionFunction(a * s, b * s);
     }
 
     @Override
-    protected ReactionFunction divide(double s){
+    protected ReactionFunction divide(float s){
         return multiply(1 / s);
     }
 
     public static ReactionFunction getFollowersReactionFunction(Record[] records){
-        double lSum = getLeaderSum(records);
-        double fSum = getFollowerSum(records);
-        double lfpSum = getLeaderFollowerProductSum(records);
-        double lSumSquared = getLeaderSumSquared(records);
+        float lSum = getLeaderSum(records);
+        float fSum = getFollowerSum(records);
+        float lfpSum = getLeaderFollowerProductSum(records);
+        float lSumSquared = getLeaderSumSquared(records);
 
-        //TODO REFACTOR!!!!!!!
-        double aStarDenominator = (lSumSquared * fSum) - (lSum * lfpSum);
-        double nominator = (records.length * lSumSquared) - (lSum * lSum);
+        float aStarNumerator = (lSumSquared * fSum) - (lSum * lfpSum);
+        float denominator = (records.length * lSumSquared) - (lSum * lSum);
 
-        double aStar = aStarDenominator / nominator;
+        float aStar = aStarNumerator / denominator;
 
-        double bStarDenominator = (records.length * lfpSum) - (lSum * fSum);
+        float bStarNumerator = (records.length * lfpSum) - (lSum * fSum);
 
-        double bStar = bStarDenominator / nominator;
+        float bStar = bStarNumerator / denominator;
 
         return new ReactionFunction(aStar, bStar);
     }
 
     private static final int HISTORICAL_DAYS = 100;
-    private static final double FORGETTING_FACTOR = 0.95;
-    private static double Pt = 0;
+    private static final float FORGETTING_FACTOR = 0.95f;
+    private static float Pt = 0;
 
     public static ReactionFunction getTheta() {
         return theta;
@@ -68,10 +66,11 @@ public class ReactionFunction extends Matrix2D{
 
     private static ReactionFunction theta = null;
 
+    public static float initializePt(Record[] records){
+        //Best initial condition for recursive least squared approach. Slides 13
 
-    public static double initializePt(Record[] records){
-        for(int d = 1; d <= HISTORICAL_DAYS; d++){ //TODO
-            double leaderPrice = records[d-1].m_leaderPrice;
+        for(int d = 1; d <= HISTORICAL_DAYS; d++){
+            float leaderPrice = records[d-1].m_leaderPrice;
             Pt += Math.pow(FORGETTING_FACTOR, HISTORICAL_DAYS-d) * (1 + leaderPrice*leaderPrice);
         }
         return Pt;
@@ -82,59 +81,54 @@ public class ReactionFunction extends Matrix2D{
         return theta;
     }
 
-    public static void updateThetaLeastSquaredApproach(Platform m_platformStub, PlayerType type, int day) throws RemoteException{
+    public static void updateThetaLeastSquaredApproach(Platform m_platformStub, PlayerType type, int day)
+            throws RemoteException{
 
         Record record = m_platformStub.query(type,day);
-        double leaderPrice = record.m_leaderPrice;
-        double followerPrice = record.m_followerPrice;
+        float leaderPrice = record.m_leaderPrice;
+        float followerPrice = record.m_followerPrice;
 
         Matrix2D adjustingFactor = calculateAdjustingFactor(leaderPrice);
 
-        double predictionError = followerPrice - theta.getFollowersApproxPrice(leaderPrice);
+        float predictionError = followerPrice - theta.getFollowersApproxPrice(leaderPrice);
 
-        //TODO absolute value????
-
-        m_platformStub.log(type, "Prediction error: (" + followerPrice + " - " + theta.getFollowersApproxPrice(leaderPrice) + " = " + predictionError);
+        m_platformStub.log(type,
+                "Prediction error: (" + followerPrice + " - " + theta.getFollowersApproxPrice(leaderPrice)
+                        + " = " + predictionError);
 
         Matrix2D secondPart = adjustingFactor.multiply(predictionError);
 
         theta = theta.plus(secondPart);
 
         updatePt(leaderPrice);
-
-        //todo floor
-
     }
 
-    private static void updatePt(double leaderPrice){
-        double scalar = 1 / FORGETTING_FACTOR;
+    private static void updatePt(float leaderPrice){
+        float scalar = 1 / FORGETTING_FACTOR;
 
-        double phiNumerator = new Matrix2D(1, leaderPrice).multiply(new Matrix2D(1, leaderPrice));
+        float phiNumerator = new Matrix2D(1, leaderPrice).multiply(new Matrix2D(1, leaderPrice));
 
-        //TODO DOUBLE CHECK THE Pt^2
-        double numerator = Pt * Pt * phiNumerator;
-        double denominator = calculatePhiDenominator(leaderPrice);
+        float numerator = Pt * Pt * phiNumerator;
+        float denominator = calculatePhiDenominator(leaderPrice);
 
 
         Pt = scalar * (Pt - numerator/denominator);
     }
 
-    public static Matrix2D calculateAdjustingFactor(double leaderPrice){
-        double nominator = calculatePhiDenominator(leaderPrice);
+    public static Matrix2D calculateAdjustingFactor(float leaderPrice){
+        float denominator = calculatePhiDenominator(leaderPrice);
 
-        Matrix2D denominator = new Matrix2D(1, leaderPrice).multiply(Pt);
+        Matrix2D numerator = new Matrix2D(1, leaderPrice).multiply(Pt);
 
-        return denominator.divide(nominator);
+        return numerator.divide(denominator);
     }
 
-    private static double calculatePhiDenominator(double leaderPrice){
-        return FORGETTING_FACTOR + Pt + Pt * leaderPrice * leaderPrice;
+    private static float calculatePhiDenominator(float leaderPrice){
+        return FORGETTING_FACTOR + Pt + (Pt * leaderPrice * leaderPrice);
     }
 
-
-
-    private static double getLeaderSum(Record[] records){
-        double d = 0;
+    private static float getLeaderSum(Record[] records){
+        float d = 0;
 
         for(Record r : records){
             d += r.m_leaderPrice;
@@ -143,8 +137,8 @@ public class ReactionFunction extends Matrix2D{
         return d;
     }
 
-    private static double getFollowerSum(Record[] records){
-        double d = 0;
+    private static float getFollowerSum(Record[] records){
+        float d = 0;
 
         for(Record r : records){
             d += r.m_followerPrice;
@@ -153,8 +147,8 @@ public class ReactionFunction extends Matrix2D{
         return d;
     }
 
-    private static double getLeaderFollowerProductSum(Record[] records){
-        double d = 0;
+    private static float getLeaderFollowerProductSum(Record[] records){
+        float d = 0;
 
         for(Record r : records){
             d += (r.m_leaderPrice * r.m_followerPrice);
@@ -164,8 +158,8 @@ public class ReactionFunction extends Matrix2D{
     }
 
 
-    private static double getLeaderSumSquared(Record[] records){
-        double d = 0;
+    private static float getLeaderSumSquared(Record[] records){
+        float d = 0;
 
         for(Record r : records){
             d += (r.m_leaderPrice * r.m_leaderPrice);
