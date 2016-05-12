@@ -9,6 +9,7 @@ import java.io.Serializable;
 public final class Record
 	implements Serializable
 {
+	private static final long serialVersionUID = -2729479511679039076L;
 	/* The date of the record */
 	public final int m_date;
 	/* The price of the leader */
